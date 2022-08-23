@@ -3,9 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, Grid, Typography } from '@mui/material';
 import { firstToUpperCase } from '../helpers/formatHelpers';
 import ElementChip from './ElementChip';
+import { useDispatch } from 'react-redux';
+import { setPokemonData } from '../store/slices/pokemon/pokemonSlice';
 
-const PokeCard = ({ pokemon }) => {
-    const [{id, name, types, sprites}, setPokemonInfo] = useState('');
+const PokeCard = ({ pokemon, setOpen }) => {
+    const [{id, name, types, sprites, abilities, base_experience,
+        height, moves, stats, weight}, setPokemonInfo] = useState('');
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         async function fetchData(){
@@ -14,6 +19,18 @@ const PokeCard = ({ pokemon }) => {
         }
         fetchData();
     }, []);
+
+    const handlePokemonView = () => {
+        setOpen(true);
+        dispatch(setPokemonData({
+            id,
+            name,
+            types,
+            sprites,
+            abilities, base_experience,
+            height, moves, stats, weight
+        }));
+    };
 
     return (
         <Grid item>
@@ -58,7 +75,6 @@ const PokeCard = ({ pokemon }) => {
                                 >
                                     Types
                                     {types?.map((element) => {
-                                        // return <div>{element.type.name}</div>;
                                         return (
                                             <ElementChip element={element.type.name} key={element.type.name} />
                                         );
@@ -81,7 +97,10 @@ const PokeCard = ({ pokemon }) => {
                                 item
                                 sx={{ mt: 2 }}
                             >
-                                <Button variant="contained">
+                                <Button
+                                    variant="contained"
+                                    onClick={ handlePokemonView }
+                                >
                                     More info
                                 </Button>
                             </Grid>

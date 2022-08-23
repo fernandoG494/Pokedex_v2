@@ -34,8 +34,8 @@ const ElementChip = ({ element='' }) => {
 
     useEffect(() => {
         verifyElement();
-    }, []);
-
+    }, [element]);
+    
     return(
         <Grid item xs={ 12 } sx={{ mt: 1 }}>
             <Chip style={{ backgroundColor: `${color}`}} label={`${element}`} />
