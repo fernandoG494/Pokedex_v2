@@ -47,7 +47,7 @@ const PokeCard = ({ pokemon, setOpen }) => {
                         }}
                     >
                         <Grid container>
-                            <Grid item xs={ 11 }>
+                            <Grid item xs={ 9 }>
                                 <Typography
                                     sx={{ fontSize: 20 }}
                                     color="text.secondary"
@@ -56,7 +56,7 @@ const PokeCard = ({ pokemon, setOpen }) => {
                                     { firstToUpperCase(name) }
                                 </Typography>
                             </Grid>
-                            <Grid item xs={ 1 }>
+                            <Grid item xs={ 3 }>
                                 <Typography
                                     sx={{ fontSize: 20 }}
                                     color="text.secondary"

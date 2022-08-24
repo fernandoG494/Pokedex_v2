@@ -5,7 +5,7 @@ export const getPokemons = (page = 0, pokemonNum) => {
     return async(dispatch) => {
         dispatch(startLoadingPokemons());
 
-        const { data } = await pokeApi.get(`/pokemon?limit=${pokemonNum}&offset=${page * pokemonNum}`);
+        const { data } = await pokeApi.get(`/pokemon?limit=${pokemonNum}&offset=${(page - 1) * pokemonNum}`);
 
         dispatch(setPokemons({
             pokemons: data.results,

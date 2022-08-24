@@ -16,7 +16,7 @@ const ElementChip = ({ element='' }) => {
                 setColor('#FF5733');
                 break;
             case 'flying':
-                setColor('#D5D8DC');
+                setColor('#4FC3F7');
                 break;
             case 'water':
                 setColor('#3498DB');
@@ -25,7 +25,40 @@ const ElementChip = ({ element='' }) => {
                 setColor('#239B56');
                 break;
             case 'normal':
-                setColor('#95A5A6');
+                setColor('');
+                break;
+            case 'electric':
+                setColor('#F4F70C');
+                break;
+            case 'ground':
+                setColor('#A04000');
+                break;
+            case 'fairy':
+                setColor('#F08080');
+                break;
+            case 'fighting':
+                setColor('#F44336');
+                break;
+            case 'psychic':
+                setColor('#CE93D8');
+                break;
+            case 'rock':
+                setColor('#8D6E63');
+                break;
+            case 'steel':
+                setColor('#9E9E9E');
+                break;
+            case 'ice':
+                setColor('#B2EBF2');
+                break;
+            case 'ghost':
+                setColor('#9FA8DA');
+                break;
+            case 'dragon':
+                setColor('#D1C4E9');
+                break;
+            case 'dark':
+                setColor('#616161');
                 break;
             default:
                 break;

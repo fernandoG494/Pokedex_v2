@@ -38,7 +38,6 @@ const MoveViewer = ({ move }) => {
                     ''
                 )}
             </Grid>
-
         </Grid>
     );
 };

@@ -8,6 +8,7 @@ import { removeSelectedPokemon } from '../store/slices/pokemon/pokemonSlice';
 import StatsViewer from './StatsViewer';
 import AbilityViewer from './AbilityViewer';
 import MoveViewer from './MoveViewer';
+import Paginator from './Paginator';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -39,23 +40,29 @@ const PokeViewer = () => {
                         <CircularProgress color='info' />
                     </Grid>
                 ) : (
-                    <Grid
-                        container
-                        spacing={ 2 }
-                        direction='row'
-                        justifyContent='center'
-                    >
-                        {pokemons.map((pokemonSelection) => 
-                            <PokeCard
-                                key={`${pokemonSelection.id + pokemonSelection.name}`}
-                                pokemon={pokemonSelection}
-                                setOpen={setOpen}
-                            />
-                        )}
-                    </Grid>
+                    <>
+                        <Grid
+                            container
+                            spacing={ 2 }
+                            direction='row'
+                            justifyContent='center'
+                        >
+                            {pokemons.map((pokemonSelection) => 
+                                <PokeCard
+                                    key={`${pokemonSelection.id + pokemonSelection.name}`}
+                                    pokemon={pokemonSelection}
+                                    setOpen={setOpen}
+                                />
+                            )}
+                        </Grid>
+
+                        {/* PAGINATOR */}
+                        <Paginator />
+                    </>
                 )}
             </Grid>
 
+            {/* DIALOG */}
             <div>
                 <Dialog
                     open={open}
@@ -117,7 +124,7 @@ const PokeViewer = () => {
                             
                             <Grid item xs={ 4 }>
                                 {pokemon.sprites ? (
-                                    <img src={`${pokemon.sprites.front_default}`} width="100%" height="100%"/>
+                                    <img src={`${pokemon.sprites.front_default}`} />
                                 ) : (
                                     ''
                                 )}

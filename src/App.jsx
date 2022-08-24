@@ -16,7 +16,7 @@ function App() {
         if(search.length === 0){
             dispatch(getPokemons(page, pokemonsNum));
         }
-    }, []);
+    }, [page]);
 
     return (
         <div>
