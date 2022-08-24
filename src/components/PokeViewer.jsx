@@ -7,6 +7,7 @@ import ElementChip from './ElementChip';
 import { removeSelectedPokemon } from '../store/slices/pokemon/pokemonSlice';
 import StatsViewer from './StatsViewer';
 import AbilityViewer from './AbilityViewer';
+import MoveViewer from './MoveViewer';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -146,6 +147,44 @@ const PokeViewer = () => {
                                 {pokemon.abilities ? (
                                     pokemon.abilities.map(({ability}) => {
                                         return <AbilityViewer ability={ability} />
+                                    })
+                                ) : (
+                                    ''
+                                )}
+                            </Grid>
+
+                            <Grid item xs={ 12 } sx={{ mt: 1 }}>
+                                <Typography
+                                    sx={{ fontSize: 16, fontWeight: 'bold' }}
+                                >
+                                    Available moves:
+                                </Typography>
+                                <Grid container direction='row'>
+                                    <Grid item xs={ 5 }>
+                                        <Typography
+                                            sx={{ fontSize: 16, fontWeight: 'bold' }}
+                                        >
+                                            Name
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={ 3 }>
+                                        <Typography
+                                            sx={{ fontSize: 16, fontWeight: 'bold' }}
+                                        >
+                                            Accurancy
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={ 4 }>
+                                    <Typography
+                                            sx={{ fontSize: 16, fontWeight: 'bold' }}
+                                        >
+                                            Types
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
+                                {pokemon.moves ? (
+                                    pokemon.moves.map(({move}) => {
+                                        return <MoveViewer move={move} />
                                     })
                                 ) : (
                                     ''

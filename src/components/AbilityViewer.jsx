@@ -2,7 +2,6 @@ import { Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { pokeApi } from '../api/pokemonsApi';
 import { firstToUpperCase } from '../helpers/formatHelpers';
-import { findEnglishDescription } from '../helpers/searchHelpers';
 
 const AbilityViewer = ({ ability }) => {
     const { name, url } = ability;
@@ -16,6 +15,10 @@ const AbilityViewer = ({ ability }) => {
         fetchData();
     }, [ability]);
 
+    const entry = abilityData?.effect_entries?.find(entry => {
+        return entry.language.name === 'en'
+    });
+
     return (
         <div>
             <Grid
@@ -24,9 +27,17 @@ const AbilityViewer = ({ ability }) => {
             >
                 <Grid item sm={ 8 }>
                     <Typography>
-                        {firstToUpperCase(name)}
+                        {firstToUpperCase(name)}:
                     </Typography>
                 </Grid>
+                <Grid item sm={ 8 }>
+                    <Typography
+                        sx={{ fontStyle: 'italic' }}
+                    >
+                        {entry?.effect}
+                    </Typography>
+                </Grid>
+                <hr />
             </Grid>
         </div>
     );
